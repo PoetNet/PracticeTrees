@@ -1,10 +1,10 @@
 ﻿namespace Domain.Entities;
 public class Chapter
 {
-    public Chapter(string title, string body, string css) 
+    public Chapter(string title, string body, string css)
     {
-        Title = title; 
-        Body = body; 
+        Title = title;
+        Body = body;
         Css = css;
 
         _assets = new List<Asset>();

@@ -1,9 +1,13 @@
+using Database.PracticeTrees.Chapters;
+using Domain.Chapters;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IChapterQuery, ChapterQuery>();
 
 var app = builder.Build();
 

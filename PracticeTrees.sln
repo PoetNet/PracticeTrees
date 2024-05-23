@@ -3,15 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{F2E0380C-B990-4195-BCDE-30B97F79D082}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{F2E0380C-B990-4195-BCDE-30B97F79D082}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{55AD172F-D0F1-4FA1-AB6E-44A5EB5AC418}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{C8F2AE87-ADA7-4CC2-BF73-D4DB7F501814}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database.PracticeTrees", "Database.PracticeTrees\Database.PracticeTrees.csproj", "{DF383949-68D7-4A62-834C-5B69CBD7BCDB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database.PracticeTrees.Migrations", "Database.PracticeTrees.Migrations\Database.PracticeTrees.Migrations.csproj", "{11A08F71-3ED5-4630-9B4E-AF27962C6761}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3030667-E62E-4821-A6E7-A734B266A153}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +30,6 @@ Global
 		{55AD172F-D0F1-4FA1-AB6E-44A5EB5AC418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55AD172F-D0F1-4FA1-AB6E-44A5EB5AC418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55AD172F-D0F1-4FA1-AB6E-44A5EB5AC418}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8F2AE87-ADA7-4CC2-BF73-D4DB7F501814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8F2AE87-ADA7-4CC2-BF73-D4DB7F501814}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8F2AE87-ADA7-4CC2-BF73-D4DB7F501814}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8F2AE87-ADA7-4CC2-BF73-D4DB7F501814}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF383949-68D7-4A62-834C-5B69CBD7BCDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF383949-68D7-4A62-834C-5B69CBD7BCDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF383949-68D7-4A62-834C-5B69CBD7BCDB}.Release|Any CPU.ActiveCfg = Release|Any CPU

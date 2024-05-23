@@ -1,27 +1,15 @@
 ﻿using Asp.Versioning;
-using MassTransit.Mediator;
+using Domain.Chapters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.V1;
 
 [ApiVersion("1")]
-public class ChaptersController : ControllerBase
+public class ChaptersController(IChapterQuery _query) : ControllerBase
 {
-    private readonly IMediator _mediator;
-
-    public ChaptersController(IMediator mediator)
+    [HttpGet("tree/{documentId:guid}")]
+    public async Task<IActionResult> GetTreeAsync(Guid documentId, CancellationToken cancellationToken)
     {
-        _mediator = mediator;
+        return new OkObjectResult(await _query.GetTreeAsync(documentId, cancellationToken));
     }
-
-    //[HttpGet("{Id}")]
-    //public async Task<IActionResult> GetAsync([FromRoute] GetChapter request, CancellationToken cancellationToken)
-    //{
-    //    return await _mediator.SendRequest(request, cancellationToken);
-    //}
-
-    //[HttpGet("tree")]
-    //public async Task<IActionResult> GetTreeAsync([FromQuery] GetChapterTree request, CancellationToken cancellationToken)
-    //{
-    //    return await _mediator.SendRequest(request, cancellationToken);
-    //}
 }
