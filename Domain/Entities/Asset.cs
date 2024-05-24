@@ -1,10 +1,7 @@
 ﻿namespace Domain.Entities;
 public class Asset
 {
-    protected Asset()
-    {
-
-    }
+    protected Asset() { }
 
     public Guid Id { get; }
     public Guid ChapterId { get; private set; }

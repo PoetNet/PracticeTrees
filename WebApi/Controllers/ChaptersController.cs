@@ -1,11 +1,13 @@
 ﻿using Asp.Versioning;
+using Database.PracticeTrees;
 using Domain.Chapters;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Controllers.V1;
+namespace WebApi.Controllers;
 
 [ApiVersion("1")]
-public class ChaptersController(IChapterQuery _query) : ControllerBase
+[Route("api/")]
+public class ChaptersController(IChapterQuery _query, DocumentationDbContext _context) : ControllerBase
 {
     [HttpGet("tree/{documentId:guid}")]
     public async Task<IActionResult> GetTreeAsync(Guid documentId, CancellationToken cancellationToken)

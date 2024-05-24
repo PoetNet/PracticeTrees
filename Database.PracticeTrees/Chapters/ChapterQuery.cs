@@ -3,8 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Database.PracticeTrees.Chapters;
 
-public class ChapterQuery(DocumentationDbContext _context) : IChapterQuery
+public class ChapterQuery : IChapterQuery
 {
+    private readonly DocumentationDbContext _context;
+
+    public ChapterQuery(DocumentationDbContext context)
+    {
+        _context = context;
+    }
+
     public async Task<IEnumerable<ChapterTree>> GetTreeAsync(Guid documentId, CancellationToken cancellationToken)
     {
         var data = await _context.Chapters
