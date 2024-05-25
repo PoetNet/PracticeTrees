@@ -1,4 +1,4 @@
-﻿TRUNCATE TABLE "Assets", "Chapters", "TechnicalDocuments" CASCADE;
+﻿TRUNCATE TABLE "Assets", "Chapters", "Documents" CASCADE;
 
 INSERT INTO "Documents" ("Id", "CreatedAt", "DeletedAt", "Title", "Description")
 VALUES
@@ -21,4 +21,4 @@ VALUES
  
 INSERT INTO "Assets" ("Id", "ChapterId", "CreatedAt", "DeletedAt", "Name", "FilePath", "Type")
 VALUES
-    ('1ee1c76a-3f13-4f03-9ad4-227178174641', '2ee1c76a-3f13-4f03-9ad4-227178174642', NOW(), NULL, 'AssetName1', '/path/to/file1', 'image');
+    ('1ee1c76a-3f13-4f03-9ad4-227178174641', '2ee1c76a-3f13-4f03-9ad4-227178174642', NOW(), NULL, 'AssetName1', '/path/to/file1', 1);

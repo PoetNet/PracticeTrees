@@ -14,4 +14,10 @@ public class ChaptersController(IChapterQuery _query, DocumentationDbContext _co
     {
         return new OkObjectResult(await _query.GetTreeAsync(documentId, cancellationToken));
     }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetTreeByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        return new OkObjectResult(await _query.GetTreeByIdAsync(id, cancellationToken));
+    }
 }
