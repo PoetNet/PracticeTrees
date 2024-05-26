@@ -1,5 +1,7 @@
 ﻿using Domain.Chapters;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace Database.PracticeTrees.Chapters;
 
@@ -15,7 +17,7 @@ public class ChapterQuery : IChapterQuery
     public async Task<IEnumerable<ChapterTree>> GetTreeByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         var data = await _context.Chapters
-            .Where(x => x.Id == id)
+            .Where(x => x.ParentId == id || x.Id == id)
             .Select(x => new ChapterDto()
             {
                 Id = x.Id,
@@ -82,5 +84,35 @@ public class ChapterQuery : IChapterQuery
             .ToList();
 
         return rootNodes;
+    }
+
+    public async Task<Chapter?> GetChapterWithChildrenAsync(Guid chapterId, CancellationToken cancellationToken)
+    {
+        var chapter = await _context.Chapters
+            //.Include(x => x.Children)
+            .FirstOrDefaultAsync(x => x.Id == chapterId, cancellationToken);
+
+        if (chapter == null)
+        {
+            return chapter;
+        }
+
+        await _context.Entry(chapter)
+            .Collection(c => c.Children)
+            .Query()
+            .Include(c => EF.Property<IReadOnlyCollection<Chapter>>(c, "Children"))
+            .LoadAsync(cancellationToken);
+
+
+        return chapter;
+    }
+
+    public async Task<List<Chapter>> GetChapterWithChildrenAsync(Guid chapterId)
+    {
+        var chapters = await _context.Chapters
+            .FromSqlInterpolated($"SELECT * FROM (WITH ChapterCTE AS (SELECT * FROM Chapters WHERE Id = {chapterId} UNION ALL SELECT * FROM Chapters c JOIN ChapterCTE cte ON c.ParentId = cte.Id) SELECT * FROM ChapterCTE) AS Result")
+            .ToListAsync();
+
+        return chapters;
     }
 }

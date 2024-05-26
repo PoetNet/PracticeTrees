@@ -18,6 +18,9 @@ public class ChaptersController(IChapterQuery _query, DocumentationDbContext _co
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetTreeByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        return new OkObjectResult(await _query.GetTreeByIdAsync(id, cancellationToken));
+        //var result = new OkObjectResult(await _query.GetTreeByIdAsync(id, cancellationToken));
+        var result = new OkObjectResult(await _query.GetChapterWithChildrenAsync(id, cancellationToken));
+        //var result = new OkObjectResult(await _query.GetChapterWithChildrenAsync(id));
+        return result;
     }
 }
